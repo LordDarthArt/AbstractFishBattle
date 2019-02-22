@@ -104,7 +104,7 @@ class _DemoBodyState extends State<DemoBody> with TickerProviderStateMixin {
         builder: (context, child) => new ClipPath(
           child: new Container(
             width: widget.size.width,
-            height: widget.size.height*5,
+            height: MediaQuery.of(context).size.height,
             color: widget.color,
           ),
           clipper: new WaveClipper(animationController.value, animList1),
