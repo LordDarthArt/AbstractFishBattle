@@ -6,6 +6,9 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 
+// Fishes
+import 'fish.dart';
+
 class DemoPage extends StatefulWidget {
   @override
   _DemoPageState createState() => new _DemoPageState();
@@ -35,6 +38,16 @@ class _DemoPageState extends State<DemoPage> {
               yOffset: 50,
             ),
           ),
+          new Fish(),
+          new Fish(),
+          new Fish(),
+          new Fish(),
+          new Fish(),
+          new Fish(),
+          new Fish(),
+          new Fish(),
+          new Fish(),
+          new Fish(),
         ],
       ),
     );
@@ -71,14 +84,14 @@ class _DemoBodyState extends State<DemoBody> with TickerProviderStateMixin {
     animationController.addListener(() {
       animList1.clear();
       for (int i = -2 - widget.xOffset;
-      i <= widget.size.width.toInt() + 2;
-      i++) {
+          i <= widget.size.width.toInt() + 2;
+          i++) {
         animList1.add(new Offset(
             i.toDouble() + widget.xOffset,
             sin((animationController.value * 360 - i) %
-                360 *
-                Vector.degrees2Radians) *
-                20 +
+                        360 *
+                        Vector.degrees2Radians) *
+                    20 +
                 50 +
                 widget.yOffset));
       }
@@ -102,13 +115,13 @@ class _DemoBodyState extends State<DemoBody> with TickerProviderStateMixin {
           curve: Curves.easeInOut,
         ),
         builder: (context, child) => new ClipPath(
-          child: new Container(
-            width: widget.size.width,
-            height: MediaQuery.of(context).size.height,
-            color: widget.color,
-          ),
-          clipper: new WaveClipper(animationController.value, animList1),
-        ),
+              child: new Container(
+                width: widget.size.width,
+                height: MediaQuery.of(context).size.height,
+                color: widget.color,
+              ),
+              clipper: new WaveClipper(animationController.value, animList1),
+            ),
       ),
     );
   }
